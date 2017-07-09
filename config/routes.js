@@ -49,6 +49,16 @@ router.route('/movie/:title')
 		})
 	});
 
+router.route('/talent/:name')
+	.get((req, res) => {
+		const name = req.params.name;
+
+		Content.find({ talent: { $elemMatch: { name } } }, (err, movies) => {
+			let randomMovie = movies[randomGenre(movies.length)];
+			res.json({ randomMovie });
+		})
+	})
+
 router.route('/:genre')
 	.get((req, res) => {
 		const genre = req.params.genre;
