@@ -17,7 +17,7 @@ var promise = mongoose.connect(db, {
 
 app.use(morgan('combined'));
 app.use(bodyParser.json({ type: '*/*' }));
-app.use(cors);
+app.use(cors());
 
 app.use(routes);
 
