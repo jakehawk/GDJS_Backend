@@ -9,6 +9,11 @@ const randomNum = () => {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+router.route('/')
+	.get((req, res) => {
+		
+	})
+
 router.route('/movies')
 	.get((req, res) => {
 		Content.find((err, movies) => {
