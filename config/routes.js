@@ -37,8 +37,17 @@ router.route('/movie/:title')
 	.get((req, res) => {
 		const title = req.params.title;
 		
-		Content.find({ title: title }, (err, movie) => {
+		Content.find({ title }, (err, movie) => {
 			res.json({ movie });
+		})
+	});
+
+router.route('/:genre')
+	.get((req, res) => {
+		const genre = req.params.genre;
+
+		Content.find({ genre }, (err, movie) => {
+			console.log(movie.length);
 		})
 	});
 
