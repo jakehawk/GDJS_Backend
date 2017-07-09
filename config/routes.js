@@ -21,6 +21,7 @@ router.route('/')
 			{ getAll: '/movies' },
 			{ getRandom: '/movie/random' },
 			{ getMovie: '/movie/:name' },
+			{ getTalent: '/talent/:name' },
 			{ getGenre: '/:genre' }
 		]});
 	})
