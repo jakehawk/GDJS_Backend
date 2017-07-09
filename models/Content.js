@@ -6,7 +6,11 @@ const ContentSchema = new mongoose.Schema({
 	cid: String,
 	image: String,
 	year: Number,
-	genre: [String]
+	genre: [String],
+	talent: [{
+		name: String,
+		role: String
+	}]
 });
 
 const Content = mongoose.model('Content', ContentSchema);

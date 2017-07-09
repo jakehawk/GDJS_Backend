@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const Content = require('../models/Content');
 const Genre = require('../models/Genre');
+const Talent = require('../models/Talent');
 const contents = require('../movie_assets/content');
 
 const db = process.env.MONGODB_URI || 'mongodb://localhost/atthack';
@@ -28,7 +29,7 @@ Content.remove({}, (err) => {
 			mongoose.connection.close();
 			process.exit();
 		});
-	}, 5000);
+	}, 45000);
 });
 console.log('DB is now seeded');
 
@@ -41,6 +42,7 @@ const getInfo = (content) => {
 	movie.image = content.POSTER_URL;
 	movie.year = content.RELEASE_YEAR;
 	movie.genre = [];
+	movie.talent = [];
 	Genre.find({ cid: content.CID }, (err, genre) => {
 		if (Array.isArray(genre)) {
 			genre.map(indivGenre => {
@@ -48,5 +50,19 @@ const getInfo = (content) => {
 			});
 		}
 	})
+	Talent.find({ cid: content.CID }, (err, talent) => {
+		let newTalent;
+		talent.map(indivTalent => {
+			newTalent = {};
+			newTalent.name = indivTalent.name;
+			newTalent.role = indivTalent.role;
+			movie.talent.push(newTalent);
+		})
+		console.log(movie.talent);
+	})
 	movies.push(movie);
 }
+
+
+
+

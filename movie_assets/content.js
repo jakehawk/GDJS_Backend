@@ -3681,7 +3681,7 @@ module.exports = [
 		"CID": "urn:dece:cid:org:WB:2060647x6000075242",
 		"PARENT_CID": null,
 		"STUDIO_NAME": "Warner Bros. Entertainment",
-		"POSTER_URL": "https://g.prod.uvvu.com/artwork/5de8d663870641dfb820b1979c29f4c0",
+		"POSTER_URL": "x",
 		"SYNOPSIS": null
 	},
 	{
