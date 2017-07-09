@@ -20,7 +20,8 @@ router.route('/')
 		res.json({ routes: [
 			{ getAll: '/movies' },
 			{ getRandom: '/movie/random' },
-			{ getMovie: '/movie/:name' }
+			{ getMovie: '/movie/:name' },
+			{ getGenre: '/:genre' }
 		]});
 	})
 
