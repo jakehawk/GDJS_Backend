@@ -29,7 +29,7 @@ Content.remove({}, (err) => {
 			mongoose.connection.close();
 			process.exit();
 		});
-	}, 45000);
+	}, 20000);
 });
 console.log('DB is now seeded');
 
