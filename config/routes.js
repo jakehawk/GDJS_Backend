@@ -3,10 +3,16 @@ const router = express.Router();
 
 const Content = require('../models/Content');
 
-const randomNum = () => {
+const randomContent = () => {
 	min = Math.ceil(0);
   max = Math.floor(832);
   return Math.floor(Math.random() * (max - min)) + min;
+}
+
+const randomGenre = (numOfMovies) => {
+	min = Math.ceil(0);
+	max = Math.floor(numOfMovies);
+	return Math.floor(Math.random() * (max - min)) + min;
 }
 
 router.route('/')
@@ -28,7 +34,7 @@ router.route('/movies')
 router.route('/movie/random')
 	.get((req, res) => {
 		Content.find((err, movies) => {
-			let randomMovie = movies[randomNum()];
+			let randomMovie = movies[randomContent()];
 			res.json({ randomMovie });
 		})
 	});
@@ -46,8 +52,9 @@ router.route('/:genre')
 	.get((req, res) => {
 		const genre = req.params.genre;
 
-		Content.find({ genre }, (err, movie) => {
-			console.log(movie.length);
+		Content.find({ genre }, (err, movies) => {
+			let randomMovie = movies[randomGenre(movies.length)];
+			res.json({ randomMovie });
 		})
 	});
 
