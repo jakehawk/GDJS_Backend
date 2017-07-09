@@ -11,13 +11,17 @@ const randomNum = () => {
 
 router.route('/')
 	.get((req, res) => {
-		
+		res.json({ routes: [
+			{ getAll: '/movies' },
+			{ getRandom: '/movie/random' },
+			{ getMovie: '/movie/:name' }
+		]});
 	})
 
 router.route('/movies')
 	.get((req, res) => {
 		Content.find((err, movies) => {
-			res.json({ movies })
+			res.json({ movies });
 		})
 	})
 
@@ -25,7 +29,7 @@ router.route('/movie/random')
 	.get((req, res) => {
 		Content.find((err, movies) => {
 			let randomMovie = movies[randomNum()];
-			res.json({ randomMovie })
+			res.json({ randomMovie });
 		})
 	});
 
