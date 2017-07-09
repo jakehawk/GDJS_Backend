@@ -1,0 +1,19 @@
+{
+  "name": "att_hack_backend",
+  "version": "1.0.0",
+  "description": "backend to host att hackathon info",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "d3-request": "^1.0.5",
+    "express": "^4.15.3",
+    "mongoose": "^4.10.0",
+    "morgan": "^1.8.1",
+    "nodemon": "^1.11.0"
+  }
+}
