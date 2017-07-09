@@ -3,6 +3,7 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 
@@ -16,21 +17,9 @@ var promise = mongoose.connect(db, {
 
 app.use(morgan('combined'));
 app.use(bodyParser.json({ type: '*/*' }));
+app.use(cors);
+
 app.use(routes);
-
-const d3 = require('d3-request');
-
-const getContent = () => {
-	console.log('hello');
-	d3.tsv('http://localhost:8080/Hackathon-Contents.tsv', function(data) {
-		data.map(movie => {
-			if (movie.CONTENT_TYPE = 'FEATURE')
-				console.log(movie);
-		})
-	});
-}
-
-// getContent();
 
 const port = process.env.PORT || 3001;
 const server = http.createServer(app);

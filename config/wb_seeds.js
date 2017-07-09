@@ -4,7 +4,10 @@ const d3 = require('d3-request');
 const Content = require('../models/Content');
 
 const db = process.env.MONGODB_URI || 'mongodb://localhost/atthack';
-mongoose.connect(db);
+// mongoose.connect(db);
+var promise = mongoose.connect(db, {
+	useMongoClient: true,
+});
 
 let movies = [];
 
@@ -13,6 +16,7 @@ console.log('Wiping DB and beginning seed');
 Content.remove({}, (err) => {
 	if (err) throw err;
 
+	console.log('before d3');
 	d3.tsv('http://localhost:8080/Hackathon-Contents.tsv', function(data) {
 		data.map(content => {
 			if (content.CONTENT_TYPE === 'FEATURE' && content.PARENT_CID === '')
